@@ -115,6 +115,10 @@ def normalize_url(url):
 def index():
     return render_template('index.html')
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'), 404
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'templates', 'media'),
